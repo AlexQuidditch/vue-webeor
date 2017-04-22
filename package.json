@@ -1,0 +1,62 @@
+{
+	"name": "vue-webeor",
+	"version": "1.0.0",
+	"description": "A Vue.js project",
+	"author": "AlexQuidditch <alexquidditch@gmail.com>",
+	"private": true,
+	"scripts": {
+		"dev": "node build/dev-server.js",
+		"build": "node build/build.js"
+	},
+	"dependencies": {
+		"particles.js": "^2.0.0",
+		"vue": "latest",
+		"vue-nprogress": "^0.1.5",
+		"vue-resource": "latest",
+		"vue-router": "latest"
+	},
+	"devDependencies": {
+		"autoprefixer": "latest",
+		"babel-core": "latest",
+		"babel-loader": "latest",
+		"babel-plugin-transform-runtime": "latest",
+		"babel-preset-es2015": "latest",
+		"babel-preset-stage-2": "latest",
+		"babel-register": "latest",
+		"chalk": "latest",
+		"connect-history-api-fallback": "latest",
+		"css-loader": "latest",
+		"eventsource-polyfill": "latest",
+		"express": "latest",
+		"extract-text-webpack-plugin": "latest",
+		"file-loader": "latest",
+		"friendly-errors-webpack-plugin": "latest",
+		"function-bind": "latest",
+		"html-webpack-plugin": "latest",
+		"http-proxy-middleware": "latest",
+		"node-sass": "latest",
+		"opn": "latest",
+		"optimize-css-assets-webpack-plugin": "latest",
+		"ora": "latest",
+		"postcss-assets": "latest",
+		"postcss-nested": "latest",
+		"postcss-short": "latest",
+		"sass-loader": "latest",
+		"semver": "latest",
+		"shelljs": "latest",
+		"url-loader": "latest",
+		"vue-loader": "latest",
+		"vue-style-loader": "latest",
+		"vue-template-compiler": "latest",
+		"vue2-loading-bar": "latest",
+		"webpack": "latest",
+		"webpack-bundle-analyzer": "latest",
+		"webpack-dev-middleware": "latest",
+		"webpack-hot-middleware": "latest",
+		"webpack-merge": "latest"
+	},
+	"engines": {
+		"node": ">= 4.0.0",
+		"npm": ">= 3.0.0"
+	}
+}

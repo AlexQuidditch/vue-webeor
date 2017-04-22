@@ -1,0 +1,17 @@
+ul, ol, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+a, p, span {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	text-decoration: none;
+}
