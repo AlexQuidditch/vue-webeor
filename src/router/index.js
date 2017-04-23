@@ -3,8 +3,8 @@ import Router from 'vue-router';
 import Main from 'components/main';
 import Portfolio from 'components/portfolio';
 import Blog from 'components/blog'
-// import About from 'components/about';
-// import Contacts from 'components/contacts';
+import About from 'components/about';
+import Contacts from 'components/contact-me';
 
 Vue.use(Router);
 
@@ -29,7 +29,9 @@ export default new Router({
 		{
 			path: '/',
 			name: 'main',
-			component: Main
+			redirect: {
+				name: 'about'
+			}
 		},
 		{
 			path: '/portfolio',
@@ -40,16 +42,16 @@ export default new Router({
 			path: '/blog',
 			name: 'blog',
 			component: Blog
-		// },
-		// {
-		// 	path: '/about',
-		// 	name: 'about',
-		// 	component: About
-		// },
-		// {
-		// 	path: '/contact-me',
-		// 	name: 'contact-me',
-		// 	component: Contacts
+		},
+		{
+			path: '/about',
+			name: 'about',
+			component: About
+		},
+		{
+			path: '/contact-me',
+			name: 'contact-me',
+			component: Contacts
 		}
 	]
 });

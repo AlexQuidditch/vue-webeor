@@ -11,6 +11,8 @@ ul, ol, li {
 h1, h2, h3, h4, h5, h6,
 ul, ol,
 a, p, span {
+	margin: 0;
+	padding: 0;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	text-decoration: none;

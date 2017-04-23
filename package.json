@@ -11,9 +11,12 @@
 	"dependencies": {
 		"particles.js": "^2.0.0",
 		"vue": "latest",
+		"vue-lazyload": "^1.0.3",
 		"vue-nprogress": "^0.1.5",
+		"vue-quill-editor": "^2.1.2",
 		"vue-resource": "latest",
-		"vue-router": "latest"
+		"vue-router": "latest",
+		"vue-scrollto": "^2.6.7"
 	},
 	"devDependencies": {
 		"autoprefixer": "latest",

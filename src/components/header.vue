@@ -2,15 +2,13 @@
 	<header id="Header" class="header">
 		<transition name="fade-slow" appear>
 			<div class="container _flex-column _j-center _a-start">
-				<Logo/>
+				<Logo class="header__logo"></Logo>
 				<h1 class="header__title">{{ title }}</h1>
 			</div>
 		</transition>
 		<div :class = "{ '_visible' : scroller }" class="header-bottom">
 			<span class="header-bottom__text">{{ bottomText }}</span>
-			<button class="header-bottom__scroller"	ripple-dark >
-				<scroll-icon class="header-bottom__scroller-icon"></scroll-icon>
-			</button>
+			<scroll-icon class="header-bottom__icon"></scroll-icon>
 		</div>
 	</header>
 </template>
@@ -27,27 +25,9 @@
 		},
 		data() {
 			return {
-				title: 'Я запускаю сайты в космос!',
-				bottomText: 'Ну почти... :) Листайте вниз --->',
-				scroller: false,
-				menuItems: [
-					{
-						name: 'Главная',
-						roll: 'main'
-					},
-					{
-						name: 'Услуги',
-						roll: 'news'
-					},
-					{
-						name: 'Портфолио',
-						roll: 'services'
-					},
-					{
-						name: 'Контакты',
-						roll: 'about'
-					}
-				]
+				title: 'Запускаю сайты в космос!',
+				bottomText: 'Ну почти... :) Листайте вниз...',
+				scroller: false
 			}
 		},
 		methods: {
@@ -73,6 +53,9 @@
 		height: $headerHeight;
 		background: url('../../static/assets/img/rocket.png') no-repeat center;
 		background-size: cover;
+		&__logo {
+			height: $headerHeight * 0.25;
+		}
 		&__title {
 			font-size: 4rem;
 			color: $red;
@@ -103,35 +86,33 @@
 		&__text {
 			color: $red;
 			font-size: 1.5rem;
-			line-height: 64px;
+			line-height: 64px
 		}
-		&__scroller {
+		&__icon {
+			overflow: visible;
 			position: absolute;
 			@include center(x);
-			margin: 0 auto;
-			size: 64px;
-			background-color: $whited;
-			border: none;
-			border-radius: 50%;
-			outline: none;
-			@include MDShadow-2($cloudy-blue);
-			transition:	box-shadow .3s ease-in-out;
-			&:focus,
-			&:hover {
-				@include MDShadow-3($cloudy-blue);
-			}
-		}
-		&__scroller-icon {
-			width: 32px;
-			margin: 5px auto auto;
+			width: 48px;
+			margin: 20px auto auto;
 			.arrow-scroll {
-				fill: $red
+				overflow: visible;
+				fill: $red;
+				animation-name: up-down;
+				animation-duration: 1s;
+				animation-direction: alternate;
+				animation-iteration-count: infinite;
+				animation-timing-function: ease-in-out;
 			}
 		}
 	}
 
-	#logo-svg {
-		height: $headerHeight * 0.25;
+	@keyframes up-down {
+		0% {
+			transform: translateY( 50% );
+		}
+		100% {
+			transform: translateY( 0%);
+		}
 	}
 
 </style>

@@ -1,28 +1,36 @@
 <template lang="html">
 	<nav id="navigation" class="navigation">
-		<div class="container _flex-row _j-end">
-			<ul class="navigation-list">
+		<div class="container _flex-row _j-between">
+			<router-link class="navigation-logo" to="/">
+				<Logo class="navigation-logo"></Logo>
+			</router-link>
+			<nav class="navigation-list">
 	  	   		<router-link v-for="navigationItem in Navigation" :key="navigationItem.key"
-					tag = "li"
 					:to="{ name: navigationItem.route }"
 					exact
+					:class = "{ 'waves-effect waves-light' : navigationItem.last }"
 					class="navigation-list__item"
-					ripple-light
 					>{{ navigationItem.name }}</router-link>
-	  	   	</ul>
+	  	   	</nav>
 		</div>
 	</nav>
 </template>
 
 <script>
+
+	import Logo from '../components/partials/icons/logo-svg.vue';
+
 	export default {
   		name: "navigation",
+		components: {
+			Logo
+		},
       	data() {
 			return {
 				Navigation: [
 					{
-						route: 'main',
-						name: 'Главная'
+						route: 'about',
+						name: 'Обо мне'
 					},
 					{
 						route: 'portfolio',
@@ -33,12 +41,9 @@
 						name: 'Блог (в разработке)'
 					},
 					{
-						route: '',
-						name: 'Обо мне'
-					},
-					{
-						route: '',
-						name: 'Связаться'
+						route: 'contact-me',
+						name: 'Связаться',
+						last: true
 					}
 				]
 			}
@@ -58,6 +63,10 @@
 		top: 0;
 		padding: 15px 0;
 		background-color: $whited
+	}
+
+	.navigation-logo {
+		height: 48px;
 	}
 
 	.navigation-list {

@@ -3,11 +3,12 @@
 		<div class="container _flex-row _j-between _a-start">
 			<div class="intro-content">
 				<span class="intro-content__pre">--- {{ Info.pre }}</span>
-				<h2 class="intro-content__title">{{ Info.title }}</h2>
+				<h2 class="intro-content__title" v-html="Info.title"></h2>
 				<p class="intro-content__description">{{ Info.description }}</p>
 				<button class="intro-content__button" type="button" ripple-dark>{{ Info.button }}</button>
 			</div>
-			<img :src="img" :alt="alt" class="intro-image">
+			<img :src="img" :alt="alt"
+				class="intro-image">
 		</div>
 		<div class="intro-bottom">
 			<button class="intro-bottom__scroller" ripple-dark >
@@ -29,9 +30,9 @@
 		data() {
 			return {
 				Info: {
-					pre: 'Benefits',
-					title: 'All your data collected in one place',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo excepturi, magnam quisquam dolores earum, vel dolorum repellendus, possimus, rerum aspernatur at explicabo optio eius nisi? Quod cumque amet perspiciatis provident?',
+					pre: 'Что тут происходит?',
+					title: 'У Вас есть проблемы.<br />Веб-проблемы.',
+					description: 'Думаете, у Вас их нет? Ха! Свяжитесь со мной, мы вместе найдём и решим их.',
 					button: 'GET STARTED'
 				},
 				img: '../../../static/assets/img/adaptive.jpg',
@@ -84,7 +85,7 @@
 			margin-top: 40px;
 			color: $cool-grey;
 			font-size: 16px;
-			line-height: 1.75;
+			line-height: 1.75
 		}
 		&__button {
 			size: 190px 50px;
