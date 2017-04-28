@@ -1,8 +1,11 @@
 <template lang="html">
 	<div id="main" class="main">
 		<section id="portfolio" class="portfolio">
-			<div class="container _flex-column _j-center _a-center">
-				<h2 class="portfolio__title">{{ title }}</h2>
+			<h2 class="portfolio__title">{{ title }}</h2>
+			<div class="container _flex-row _j-center ">
+				<ul class="portfolio-list">
+					<li class="portfolio-list__item"></li>
+				</ul>
 			</div>
 		</section>
 	</div>
@@ -31,9 +34,18 @@
 	@import '../scss/partials/_variables';
 
 	.portfolio {
-		height: 100vh;
+		height: 100vh;;
 		&__title {
+			text-align: center;
 			font-size: 3rem;
+		}
+	}
+
+	.portfolio-list {
+		margin-top: 48px;
+		&__item {
+			size: 300px 400px;
+			@include MDShadow-5($red);
 		}
 	}
 

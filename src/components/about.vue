@@ -25,7 +25,8 @@
 			return {
 				title: 'Привет!\nМеня зовут Забайкальский Алексей,\nмне 23 года.',
 				aboutMe:
-					`Я full-stack разработчик с уклоном во front-end. Разрабатываю веб-приложения с нуля.<br />
+					`<br />
+					Я junior full-stack разработчик с уклоном во front-end. Разрабатываю веб-приложения с нуля.<br />
 					Приоритетной задачей является решение бизнес-проблем заказчика.<br />
 					С точки зрения разработки ставлю перед собой следующие задачи:<br />
 					<ul>
@@ -42,10 +43,10 @@
 					<h3>Технологии:</h3>
 					Frontend: <br />
 					<ul>
-						<li>- JavaScript (ECMAScript 2015)</li>
-						<li>- Базовые знания TypeScript</li>
 						<li>- HTML</li>
 						<li>- SASS / SCSS + PostCSS (БЭМ)</li>
+						<li>- JavaScript (ECMAScript 2015)</li>
+						<li>- Базовые знания TypeScript</li>
 						<li>- SVG</li>
 						<li>- Экосистема Vue.js, VanillaJS, JQuery, HanblebarsJS</li>
 						<li>- Gulp, Webpack</li>
@@ -59,7 +60,7 @@
 					Дополнительно:
 					<ul>
 						<li>- Git, GitHub</li>
-						<li>- Zeplin - работа с макетами</li>
+						<li>- Adobe Photoshop, Zeplin - работа с макетами</li>
 					</ul>
 					Есть опыт написания простых ботов для Telegram на Node.js`,
 				Links: [
@@ -100,6 +101,8 @@
 			line-height: 2;
 		}
 		&__button {
+			margin-top: 28px;
+			margin-right: 28px;
 			padding: 14px 28px;
 			color: $whited $red;
 			border-radius: 25px;

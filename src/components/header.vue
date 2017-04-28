@@ -36,7 +36,7 @@
 			}
 		},
 		mounted() {
-			setTimeout( this.toggleScroller , 2500 );
+			setTimeout( this.toggleScroller , 3000 );
 		}
 	}
 </script>
@@ -54,7 +54,7 @@
 		background: url('../../static/assets/img/rocket.png') no-repeat center;
 		background-size: cover;
 		&__logo {
-			height: $headerHeight * 0.25;
+			height: $headerHeight * 0.2;
 		}
 		&__title {
 			font-size: 4rem;
@@ -97,11 +97,6 @@
 			.arrow-scroll {
 				overflow: visible;
 				fill: $red;
-				animation-name: up-down;
-				animation-duration: 1s;
-				animation-direction: alternate;
-				animation-iteration-count: infinite;
-				animation-timing-function: ease-in-out;
 			}
 		}
 	}
