@@ -10,18 +10,12 @@ Vue.use(VueResource);
 
 Vue.use(VueScrollTo);
 Vue.use(VueQuillEditor);
-Vue.use(VueLazyload, {
-  preLoad: 1.3,
-  attempt: 1
-});
 
-Vue.http.options.root = 'https://autosaloon-293cd.firebaseio.com/'
+import data from './data.json';
 
-const app = new Vue({
-	el: '#wrapper',
+Vue.http.options.root = data.root
+
+const webeor = new Vue({
 	router,
-	template: '<App/>',
-	components: {
-		App
-	}
-});
+	render: h => h(App)
+}).$mount('#wrapper');

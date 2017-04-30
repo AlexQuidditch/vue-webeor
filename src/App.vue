@@ -7,6 +7,7 @@
 			<router-view></router-view>
 		</transition>
 		<s-footer></s-footer>
+		<button-up></button-up>
 	</div>
 </template>
 
@@ -18,17 +19,19 @@
 	import sHeader from './components/header';
 	import sNavigation from './components/navigation';
 	import sFooter from './components/footer';
+	import buttonUp from './components/button-up';
 
 	export default {
 		name: 'app',
 		components: {
 			sHeader,
 			sNavigation,
-			sFooter
+			sFooter,
+			buttonUp
 		},
-		mounted () {
+		mounted() {
 		  	this.$nextTick(() => {
-		    	// this.initParticleJS()
+		    	this.initParticleJS()
 	    	})
 		},
 		methods: {
@@ -48,7 +51,6 @@
 	@import 'scss/layout/resets';
 
 	html , body {
-		overflow-x: hidden;
 		size: 100%;
 	}
 
@@ -60,6 +62,9 @@
 
 	.main {
 		padding: 40px 0;
+		@include MQ(Pp) {
+			padding-top: 60px;
+		}
 	}
 
 	.particle-js {
@@ -72,9 +77,15 @@
 	.container {
 		size: $containersWidth 100%;
 		margin: 0 auto;
+		@include MQ(Pp) {
+			width: 90%
+		}
 		&._flex-row {
 			display: flex;
 			flex-flow: row wrap;
+			@include MQ(Pp) {
+				flex-flow: column wrap;
+			}
 		}
 		&._flex-column {
 			display: flex;
@@ -119,6 +130,20 @@
 	.fade-enter,
 	.fade-leave-to {
     	opacity: 0;
+	}
+
+	.slide-up-enter {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	.slide-up-enter-to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.slide-up-enter,
+	.slide-up-enter-to {
+		transition: transform 1.5s, opacity 1.5s;
 	}
 
 	.fade-slow-enter-active,

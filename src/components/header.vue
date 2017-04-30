@@ -2,13 +2,14 @@
 	<header id="Header" class="header">
 		<transition name="fade-slow" appear>
 			<div class="container _flex-column _j-center _a-start">
-				<Logo class="header__logo"></Logo>
+				<logo class="header__logo"></logo>
 				<h1 class="header__title">{{ title }}</h1>
 			</div>
 		</transition>
 		<div :class = "{ '_visible' : scroller }" class="header-bottom">
 			<span class="header-bottom__text">{{ bottomText }}</span>
-			<scroll-icon class="header-bottom__icon"></scroll-icon>
+			<scroll-icon v-scroll-to = "{ el: '#main' , offset: -78, duration: 950 }"
+				class="header-bottom__icon"></scroll-icon>
 		</div>
 	</header>
 </template>
@@ -55,14 +56,25 @@
 		background-size: cover;
 		&__logo {
 			height: $headerHeight * 0.2;
+			@include MQ(Pp) {
+				height: $headerHeight * 0.1;
+			}
 		}
 		&__title {
 			font-size: 4rem;
 			color: $red;
+			@include MQ(Pp) {
+				font-size: 1.5rem;
+				line-height: 3;
+			}
 		}
 		&__subtitle {
 			font-size: 3rem;
 			color: $red;
+			@include MQ(Pp) {
+				font-size: 1.5rem;
+				line-height: 3;
+			}
 		}
 	}
 
@@ -78,6 +90,11 @@
 			opacity .3s ease-in-out,
 			visibility .3s ease-in-out,
 			transform .6s ease-in-out;
+		@include MQ(Pp) {
+			display: flex;
+			flex-flow: column wrap;
+			width: 100%
+		}
 		&._visible {
 			opacity: 1;
 			visibility: visible;
@@ -86,7 +103,11 @@
 		&__text {
 			color: $red;
 			font-size: 1.5rem;
-			line-height: 64px
+			line-height: 64px;
+			@include MQ(Pp) {
+				text-align: center;
+				font-size: 1.25rem;
+			}
 		}
 		&__icon {
 			overflow: visible;
@@ -94,6 +115,11 @@
 			@include center(x);
 			width: 48px;
 			margin: 20px auto auto;
+			cursor: pointer;
+			user-select: none;
+			@include MQ(Pp) {
+				margin: -100px auto auto;
+			}
 			.arrow-scroll {
 				overflow: visible;
 				fill: $red;

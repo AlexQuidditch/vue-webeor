@@ -8,10 +8,12 @@
 					<router-link
 						v-for = "linkItem in Links" :key="linkItem.key"
 						:to = "{ name: linkItem.route }"
+						v-scroll-to = "{ el: '#main' , offset: -78, duration: 950 }"
 						tag = "button"
 						class = "about__button"
 						ripple-light
 						>{{ linkItem.name }}</router-link>
+						<a :href="cv.link" target="_blank" class="about__button _cv" ripple-light >{{ cv.name }}</a>
 				</div>
 			</div>
 		</section>
@@ -26,31 +28,20 @@
 				title: 'Привет!\nМеня зовут Забайкальский Алексей,\nмне 23 года.',
 				aboutMe:
 					`<br />
-					Я junior full-stack разработчик с уклоном во front-end. Разрабатываю веб-приложения с нуля.<br />
-					Приоритетной задачей является решение бизнес-проблем заказчика.<br />
-					С точки зрения разработки ставлю перед собой следующие задачи:<br />
-					<ul>
-						<li>- Построение оптимального UI;</li>
-						<li>- Оптимизация времени загрузки приложения;</li>
-						<li>- Написание понятного поддерживаемого кода;</li>
-						<li>- Обеспечение возможности быстрого масштабирования;</li>
-						<li>- и другие...</li>
-					</ul>
-					<br />
-					Не использую CMS в работе, но имею некоторое знакомство с MODx. <br />
+					Я front-end разработчик.<br />
 					Eсть опыт разработки проектов с нуля, как статических, так и SPA. <br />
 					<br />
 					<h3>Технологии:</h3>
 					Frontend: <br />
 					<ul>
-						<li>- HTML</li>
-						<li>- SASS / SCSS + PostCSS (БЭМ)</li>
+						<li>- HTML5</li>
+						<li>- SCSS + PostCSS (БЭМ)</li>
 						<li>- JavaScript (ECMAScript 2015)</li>
 						<li>- Базовые знания TypeScript</li>
 						<li>- SVG</li>
 						<li>- Экосистема Vue.js, VanillaJS, JQuery, HanblebarsJS</li>
 						<li>- Gulp, Webpack</li>
-						<li>- Yarn, NPM, Bower</li>
+						<li>- Yarn, npm, Bower</li>
 					</ul>
 					Backend:
 					<ul>
@@ -72,7 +63,11 @@
 						route: 'contact-me',
 						name: 'Связаться со мной'
 					}
-				]
+				],
+				cv: {
+					link: '//docs.google.com/document/d/1TGCfkyZMv3AG0VFFrfsMV9G4XdW8GkTbv6MT81lNGtQ/',
+					name: 'Скачать резюме'
+				}
 			}
       	},
 		mounted() {
@@ -95,10 +90,16 @@
 			line-height: 1.5;
 			text-align: center;
 			white-space: pre;
+			@include MQ(Pp) {
+				font-size: 1.25rem;
+			}
 		}
 		&__text {
 			font-size: 1.5rem;
 			line-height: 2;
+			@include MQ(Pp) {
+				font-size: 1.15rem;
+			}
 		}
 		&__button {
 			margin-top: 28px;
@@ -114,6 +115,12 @@
 			&._active,
 			&:hover {
 				@include MDShadow-2($red);
+			}
+			&._cv {
+				background-color: $blue
+			}
+			@include MQ(Pp) {
+				margin-right: 0;
 			}
 		}
 	}

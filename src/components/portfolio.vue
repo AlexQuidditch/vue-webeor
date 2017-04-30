@@ -1,22 +1,62 @@
 <template lang="html">
-	<div id="main" class="main">
+	<main id="main" class="main">
 		<section id="portfolio" class="portfolio">
 			<h2 class="portfolio__title">{{ title }}</h2>
-			<div class="container _flex-row _j-center ">
+			<div class="container">
 				<ul class="portfolio-list">
-					<li class="portfolio-list__item"></li>
+					<portfolio-item v-for = "portfolioItem in Portfolio" :key="portfolioItem.link"
+						:title = "portfolioItem.title"
+						:picture = "portfolioItem.picture"
+						:description = "portfolioItem.description"
+						:link = "portfolioItem.link"
+						:repository = "portfolioItem.repository"
+					></portfolio-item>
 				</ul>
 			</div>
 		</section>
-	</div>
+	</main>
 </template>
 
 <script>
+
+	import portfolioItem from './portfolio/portfolio-item';
+
 	export default {
   		name: "portfolio",
+		components: { portfolioItem	},
       	data() {
 			return {
-				title: 'Портфолио!'
+				title: 'Моё портфолио:',
+				Portfolio: [
+					{
+						title: 'Сушилка',
+						picture: '../../static/assets/img/sushilka-screen.jpg',
+						description: 'Сайт доставки магазина японской кухни "Сушилка". ',
+						link: '//суши-ачинск.рф',
+						repository: '//github.com/AlexQuidditch/vue-sushilkasite'
+					},
+					{
+						title: 'Тайга-Медиа',
+						picture: '../../static/assets/img/taiga-screen.jpg',
+						description: 'Сайт рекламного агентства в г. Томске',
+						link: '//taiga70.com',
+						repository: '//github.com/AlexQuidditch/gulp-taiga'
+					},
+					{
+						title: 'Комфорт 124',
+						picture: '../../static/assets/img/komfort124-screen.jpg',
+						description: 'Сайт поставщика отопительного оборудования',
+						link: '',
+						repository: '//github.com/AlexQuidditch/komfortSite'
+					},
+					{
+						title: 'WebeOR',
+						picture: '../../static/assets/img/webeor-screen.jpg',
+						description: 'Репозиторий этого сайта',
+						link: '',
+						repository: '//github.com/AlexQuidditch/vue-webeor'
+					}
+				]
 			}
       	},
 		mounted() {
@@ -34,18 +74,24 @@
 	@import '../scss/partials/_variables';
 
 	.portfolio {
-		height: 100vh;;
+		min-height: 100vh;
 		&__title {
 			text-align: center;
 			font-size: 3rem;
+			@include MQ(Pp) {
+				font-size: 2.25rem;
+			}
 		}
 	}
 
 	.portfolio-list {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+		align-items: flex-start;
 		margin-top: 48px;
-		&__item {
-			size: 300px 400px;
-			@include MDShadow-5($red);
+		@include MQ(Pp) {
+			flex-flow: column wrap;
 		}
 	}
 

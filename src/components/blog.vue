@@ -1,20 +1,19 @@
 <template lang="html">
 	<main id="main" class="main">
-		<transition name="fade" mode="out-in">
+		<transition name="slide-up" mode="out-in">
 			<div v-if="!isLoaded" key = "loading" class="loader">
 				<div class="loader__spinner"></div>
 				<h2 class="loader__title">Загружаю посты...</h2>
 			</div>
 			<transition-group
 				v-else
-				name="fade"
-				mode="out-in"
 				tag = "div"
-				class="container"
+				class="container _flex-column _blog"
 				>
 				<post v-for = "postItem in Posts" :key = "postItem.time"
 					:title = "postItem.title"
 					:time = "postItem.time"
+					:picture = "postItem.picture"
 					:content = "postItem.content"
 					>
 				</post>
@@ -69,10 +68,17 @@
 
 	@import "../scss/SpinThatShit/loaders.scss";
 
+	.container._blog {
+		width: $containersWidth * .9;
+		@include MQ(Pp) {
+			max-width: 90%
+		}
+	}
+
 	.blog {
 		min-height: 100vh;
-		&__title {
-			font-size: 3rem;
+		.container {
+			min-height: 85vh;
 		}
 	}
 	.loader {
@@ -80,7 +86,7 @@
 		flex-flow: column wrap;
 		justify-content: center;
 		align-items: center;
-		height: 75vh;
+		height: 85vh;
 		&__spinner {
 			@include loader06($size: 56px, $border-size: 4px, $duration: 1s);
 		}
