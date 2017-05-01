@@ -11,7 +11,7 @@ const scrollBehavior = (to, from, savedPosition) => {
 	} else {
 		const position = {}
 		if (to.hash) {
-			position.selector = to.hash
+			porousition.selector = to.hash
 		}
 		if (to.matched.some( m => m.meta.scrollToTop )) {
 			position.x = 0
