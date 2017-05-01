@@ -24,7 +24,7 @@
 
 <script>
 
-	import Post from '../components/templates/blog-post.vue';
+	import Post from '../components/templates/blog-post';
 
 	export default {
   		name: "blog",
