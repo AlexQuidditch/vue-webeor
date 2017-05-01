@@ -1,5 +1,5 @@
 <template lang="html">
-	<div id="main" class="main">
+	<main id="main" class="main">
 		<section id="contact-me" class="contact-me">
 			<h2 class="contact-me__title">{{ title }}</h2>
 			<div class="container _flex-column _a-start _contact-me">
@@ -12,7 +12,7 @@
 				</ul>
 			</div>
 		</section>
-	</div>
+	</main>
 </template>
 
 <script>

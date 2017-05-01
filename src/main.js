@@ -5,10 +5,7 @@ import store from './store';
 import App from './App';
 
 import VueResource from 'vue-resource';
-import VueQuillEditor from 'vue-quill-editor';
 import VueScrollTo from 'vue-scrollto';
-import VueLazyload from 'vue-lazyload'
-
 
 Vue.use(VueResource);
 
