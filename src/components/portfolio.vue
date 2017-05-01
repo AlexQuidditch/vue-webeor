@@ -1,18 +1,24 @@
 <template lang="html">
 	<main id="main" class="main">
 		<section id="portfolio" class="portfolio">
-			<h2 class="portfolio__title">{{ title }}</h2>
-			<div class="container">
-				<ul class="portfolio-list">
-					<portfolio-item v-for = "portfolioItem in Portfolio" :key="portfolioItem.link"
-						:title = "portfolioItem.title"
-						:picture = "portfolioItem.picture"
-						:description = "portfolioItem.description"
-						:link = "portfolioItem.link"
-						:repository = "portfolioItem.repository"
-					></portfolio-item>
-				</ul>
-			</div>
+			<transition name="slide-up" mode="out-in">
+				<div v-if="!PortfolioIsLoaded" key = "loading" class="loader">
+					<div class="loader__spinner _portfolio"></div>
+					<h2 class="loader__title">Загружаю портфолио...</h2>
+				</div>
+				<div v-else class="container">
+					<ul class="portfolio-list">
+						<portfolio-item v-for = "portfolioItem in Portfolio" :key="portfolioItem.title"
+							:title = "portfolioItem.title"
+							:picture = "portfolioItem.picture"
+							:description = "portfolioItem.description"
+							:link = "portfolioItem.link"
+							:repository = "portfolioItem.repository"
+							>
+						</portfolio-item>
+					</ul>
+				</div>
+			</transition>
 		</section>
 	</main>
 </template>
@@ -24,45 +30,16 @@
 	export default {
   		name: "portfolio",
 		components: { portfolioItem	},
-      	data() {
-			return {
-				title: 'Моё портфолио:',
-				Portfolio: [
-					{
-						title: 'Сушилка',
-						picture: '../../static/assets/img/sushilka-screen.jpg',
-						description: 'Сайт доставки магазина японской кухни "Сушилка". ',
-						link: '//суши-ачинск.рф',
-						repository: '//github.com/AlexQuidditch/vue-sushilkasite'
-					},
-					{
-						title: 'Тайга-Медиа',
-						picture: '../../static/assets/img/taiga-screen.jpg',
-						description: 'Сайт рекламного агентства в г. Томске',
-						link: '//taiga70.com',
-						repository: '//github.com/AlexQuidditch/gulp-taiga'
-					},
-					{
-						title: 'Комфорт 124',
-						picture: '../../static/assets/img/komfort124-screen.jpg',
-						description: 'Сайт поставщика отопительного оборудования',
-						link: '',
-						repository: '//github.com/AlexQuidditch/komfortSite'
-					},
-					{
-						title: 'WebeOR',
-						picture: '../../static/assets/img/webeor-screen.jpg',
-						description: 'Репозиторий этого сайта',
-						link: '',
-						repository: '//github.com/AlexQuidditch/vue-webeor'
-					}
-				]
+		computed: {
+			Portfolio() {
+				return this.$store.state.Portfolio
+			},
+			PortfolioIsLoaded() {
+				return this.$store.state.PortfolioIsLoaded
 			}
-      	},
+		},
 		mounted() {
-			Waves.init();
-			Waves.attach('[ripple-dark]', ['waves-dark']);
-			Waves.attach('[ripple-light]', ['waves-light']);
+			this.$store.dispatch('getPortfolio' , 'portfolio.json');
 		}
 	}
 </script>

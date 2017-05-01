@@ -13,13 +13,13 @@ const scrollBehavior = (to, from, savedPosition) => {
 		if (to.hash) {
 			position.selector = to.hash
 		}
-		if (to.matched.some(m => m.meta.scrollToTop)) {
+		if (to.matched.some( m => m.meta.scrollToTop )) {
 			position.x = 0
 			position.y = 0
 		}
 		return position
 	}
-}
+};
 
 export default new Router({
 	mode: 'history',

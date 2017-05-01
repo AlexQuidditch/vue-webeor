@@ -1,8 +1,8 @@
 <template lang="html">
 	<main id="main" class="main">
 		<transition name="slide-up" mode="out-in">
-			<div v-if="!isLoaded" key = "loading" class="loader">
-				<div class="loader__spinner"></div>
+			<div v-if="!PostsIsLoaded" key = "loading" class="loader">
+				<div class="loader__spinner _blog"></div>
 				<h2 class="loader__title">Загружаю посты...</h2>
 			</div>
 			<transition-group
@@ -28,34 +28,20 @@
 
 	export default {
   		name: "blog",
-		components: {
-			Post
-		},
-      	data() {
-			return {
-				isLoaded: false,
-				Posts: []
+		components: { Post },
+		computed: {
+			Posts() {
+				return this.$store.state.Posts
+			},
+			PostsIsLoaded() {
+				return this.$store.state.PostsIsLoaded
 			}
-      	},
-		created() {
-			this.$http.get('posts.json')
-				.then(response => {
-					return response.json();
-				})
-				.then(data => {
-					const getData = [];
-					for (let key in data) {
-						getData.push(data[key])
-					};
-					getData.reverse().join();
-					this.Posts = getData;
-					this.isLoaded = true
-				});
 		},
 		mounted() {
 			Waves.init();
 			Waves.attach('[ripple-dark]', ['waves-dark']);
 			Waves.attach('[ripple-light]', ['waves-light']);
+			this.$store.dispatch('getPosts' , 'posts.json');
 		}
 	}
 </script>
@@ -65,8 +51,6 @@
 	@import '../scss/partials/_layout';
 	@import '../scss/partials/_mixins';
 	@import '../scss/partials/_variables';
-
-	@import "../scss/SpinThatShit/loaders.scss";
 
 	.container._blog {
 		width: $containersWidth * .9;
@@ -79,19 +63,6 @@
 		min-height: 100vh;
 		.container {
 			min-height: 85vh;
-		}
-	}
-	.loader {
-		display: flex;
-		flex-flow: column wrap;
-		justify-content: center;
-		align-items: center;
-		height: 85vh;
-		&__spinner {
-			@include loader06($size: 56px, $border-size: 4px, $duration: 1s);
-		}
-		&__title {
-			margin-top: 40px;
 		}
 	}
 

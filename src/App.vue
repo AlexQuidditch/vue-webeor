@@ -50,6 +50,8 @@
 	@import 'scss/partials/_variables';
 	@import 'scss/layout/resets';
 
+		@import "./scss/SpinThatShit/loaders.scss";
+
 	html , body {
 		size: 100%;
 	}
@@ -120,6 +122,26 @@
 		}
 	}
 
+	.loader {
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: center;
+		align-items: center;
+		height: 85vh;
+		&__spinner {
+			&._blog {
+				@include loader06($size: 56px, $border-size: 4px, $duration: 1s);
+			}
+			&._portfolio {
+				margin-bottom: 75px;
+				@include loader08($size: 36px, $duration: 1s, $gap: 10px);
+			}
+		}
+		&__title {
+			margin-top: 40px;
+		}
+	}
+
 	@include waves-light( $whited, $ripple-opacity);
 	@include waves-dark( $bluish-purple, $ripple-opacity);
 
@@ -140,10 +162,16 @@
 		opacity: 1;
 		transform: translateY(0);
 	}
+	.slide-up-leave {
+		opacity: 1;
+	}
+	.slide-up-leave-to {
+		opacity: 0;
+	}
 
-	.slide-up-enter,
-	.slide-up-enter-to {
-		transition: transform 1.5s, opacity 1.5s;
+	.slide-up-enter-active,
+	.slide-up-leave-active {
+		transition: transform 1s, opacity 1s;
 	}
 
 	.fade-slow-enter-active,

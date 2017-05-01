@@ -4,11 +4,10 @@
 		<img :src="picture" :alt="title" class="portfolio-item__picture" />
 		<p class="portfolio-item__description">{{ description }}</p>
 		<a :href="link"
-			:title="linkTitle"
 			 v-if="link.length > 0"
-			class="portfolio-item__link"
+			class="portfolio-item__link waves-effect waves-light"
 			target="_blank"
-			ripple-light
+			title="Откроется в новой вкладке"
 			>Открыть сайт</a>
 			<a :href="repository" target="_blank" class="portfolio-item__repository">
 				<github-icon class="portfolio-item__icon"></github-icon>
@@ -23,11 +22,9 @@
 	export default {
   		name: "portfolio-item",
 		components: { githubIcon },
-		props: [ 'title' , 'picture' , 'description' , 'link' , 'repository' ],
-      	data() {
-			return { linkTitle: 'Откроется в новой вкладке' }
-      	}
+		props: [ 'title' , 'picture' , 'description' , 'link' , 'repository' ]
 	}
+	
 </script>
 
 <style lang="scss">
