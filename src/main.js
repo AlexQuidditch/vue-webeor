@@ -10,14 +10,12 @@ import VueScrollTo from 'vue-scrollto';
 Vue.use(VueResource);
 
 Vue.use(VueScrollTo);
-Vue.use(VueQuillEditor);
 
 import data from './data.json';
 
 Vue.http.options.root = data.root
 
-const webeor = new Vue({
-	router,
-	store,
+new Vue({
+	router , store,
 	render: h => h(App)
 }).$mount('#wrapper');
