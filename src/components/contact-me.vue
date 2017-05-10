@@ -2,15 +2,13 @@
 	<main id="main" class="main">
 		<section id="contact-me" class="contact-me">
 			<h2 class="contact-me__title">{{ title }}</h2>
-			<div class="container _flex-column _a-start _contact-me">
-				<ul class="contacts-list">
-					<li v-for="contactsItem in Contacts"
-						class="contacts-item">
-						<h4 class="contacts-item__title">{{ contactsItem.title }}</h4>
-						<a :href="contactsItem.link" class="contacts-item__content">{{ contactsItem.text }}</a>
-					</li>
-				</ul>
-			</div>
+			<ul class="container contacts-list">
+				<li v-for="contactsItem in Contacts"
+					class="contacts-item">
+					<h4 class="contacts-item__title">{{ contactsItem.title }}</h4>
+					<a :href="contactsItem.link" class="contacts-item__content">{{ contactsItem.text }}</a>
+				</li>
+			</ul>
 		</section>
 	</main>
 </template>
@@ -23,14 +21,19 @@
 				title: 'Связаться со мной можно вот так:',
 				Contacts: [
 					{
-						title: 'E-mail',
-						link: 'mailto:alexquidditch@yandex.ru',
-						text: 'AlexQuidditch@yandex.ru'
-					},
-					{
 						title: 'Skype',
 						link: 'skype:alex_quidditch',
 						text: 'Alex_Quidditch'
+					},
+					{
+						title: 'Сотовый',
+						link: null,
+						text: '+7 (996) 937-84-75'
+					},
+					{
+						title: 'E-mail',
+						link: 'mailto:alexquidditch@yandex.ru',
+						text: 'AlexQuidditch@yandex.ru'
 					}
 				]
 			}
@@ -46,15 +49,7 @@
 <style lang="scss">
 
 	@import '../scss/partials/_layout';
-	@import '../scss/partials/_mixins';
 	@import '../scss/partials/_variables';
-
-	.container._contact-me {
-		width: $containersWidth * .8;
-		@include MQ(Pp) {
-			width: 90%;
-		}
-	}
 
 	.contact-me {
 		min-height: 100vh;
@@ -66,6 +61,10 @@
 				font-size: 2.25rem;
 			}
 		}
+	}
+
+	.contacts-list {
+		width: $containersWidth * .8
 	}
 
 	.contacts-item {

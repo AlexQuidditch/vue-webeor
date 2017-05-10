@@ -5,15 +5,18 @@
 				<h2 class="about__title">{{ title }}</h2>
 				<p class="about__text" v-html="aboutMe" ></p>
 				<div class="container _flex-row">
-					<router-link
-						v-for = "linkItem in Links" :key="linkItem.key"
+					<router-link v-for = "linkItem in Links" :key="linkItem.key"
 						:to = "{ name: linkItem.route }"
 						v-scroll-to = "{ el: '#main' , offset: -78, duration: 950 }"
 						tag = "button"
 						class = "about__button"
 						ripple-light
 						>{{ linkItem.name }}</router-link>
-						<a :href="cv.link" target="_blank" class="about__button _cv" ripple-light >{{ cv.name }}</a>
+						<a :href="cv.link"
+							target="_blank"
+							class="about__button _cv"
+							ripple-light
+							>{{ cv.name }}</a>
 				</div>
 			</div>
 		</section>
@@ -117,6 +120,7 @@
 				@include MDShadow-2($red);
 			}
 			&._cv {
+				text-align: center;
 				background-color: $blue
 			}
 			@include MQ(Pp) {

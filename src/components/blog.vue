@@ -38,10 +38,10 @@
 			}
 		},
 		mounted() {
+			this.$store.dispatch('getPosts' , 'posts.json');
 			Waves.init();
 			Waves.attach('[ripple-dark]', ['waves-dark']);
 			Waves.attach('[ripple-light]', ['waves-light']);
-			this.$store.dispatch('getPosts' , 'posts.json');
 		}
 	}
 </script>
